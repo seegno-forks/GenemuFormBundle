@@ -408,7 +408,7 @@
 {% endspaceless %}
 {% endblock %}
 
-{% block genemu_jquerychosen_javascript %}
+{% block genemu_jquerychosen_choice_javascript %}
 {% spaceless %}
     <script type="text/javascript">
         jQuery(document).ready(function($) {
@@ -422,7 +422,23 @@
         });
     </script>
 {% endspaceless %}
-{% endblock genemu_jquerychosen_javascript %}
+{% endblock genemu_jquerychosen_choice_javascript %}
+
+{% block genemu_jquerychosen_entity_javascript %}
+{% spaceless %}
+    <script type="text/javascript">
+        jQuery(document).ready(function($) {
+            $field = $('#{{ id }}');
+
+            $field.chosen({
+                no_results_text: "{{ no_results_text|trans({}, translation_domain) }}",
+                allow_single_deselect: {{ allow_single_deselect ? 'true' : 'false' }},
+                disable_search_threshold: {{ disable_search_threshold }}
+            });
+        });
+    </script>
+{% endspaceless %}
+{% endblock genemu_jquerychosen_entity_javascript %}
 
 {% block genemu_jquerygeolocation_javascript %}
 {% spaceless %}
